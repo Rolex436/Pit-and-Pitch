@@ -7,9 +7,15 @@ const dateFormat = new Intl.DateTimeFormat("en-GB", {
   timeZone: "UTC",
 });
 
-export function RaceCard({ race }: { race: Race }) {
+export function RaceCard({
+  race,
+  isPast,
+}: {
+  race: Race;
+  isPast: boolean;
+}) {
   const start = getRaceStart(race);
-  const isPast = start.getTime() < Date.now();
+
   const time = race.time
     ? `${start.toISOString().slice(11, 16)} UTC`
     : null;
